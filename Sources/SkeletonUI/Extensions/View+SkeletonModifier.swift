@@ -3,7 +3,8 @@ import SwiftUI
 @available(iOS 13.0, macOS 10.15, tvOS 13.0, watchOS 6.0, *)
 public extension View {
     func skeleton(with loading: Bool,
-                  size: CGSize? = .none,
+                  width: CGFloat? = nil,
+                  height: CGFloat? = nil,
                   transition: (type: AnyTransition, animation: Animation?) = (.opacity, .default),
                   animation: AnimationType = .linear(),
                   appearance: AppearanceType = .gradient(),
@@ -22,7 +23,7 @@ public extension View {
                         }
                     }
                 }
-                .frame(width: size?.width, height: size?.height)
+                .frame(width: width, height: height)
                 .transition(transition.type)
                 .padding(.top, padding?.top ?? 0)
                 .padding(.bottom, padding?.bottom ?? 0)
