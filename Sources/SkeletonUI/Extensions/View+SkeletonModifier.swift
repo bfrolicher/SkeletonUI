@@ -10,7 +10,8 @@ public extension View {
                   shape: ShapeType = .capsule,
                   lines: Int = 1,
                   scales: [Int: CGFloat]? = .none,
-                  spacing: CGFloat? = .none) -> some View {
+                  spacing: CGFloat? = .none,
+                  padding: EdgeInsets? = nil) -> some View {
         ZStack {
             if loading {
                 VStack(spacing: spacing) {
@@ -23,6 +24,10 @@ public extension View {
                 }
                 .frame(width: size?.width, height: size?.height)
                 .transition(transition.type)
+                .padding(.top, padding?.top ?? 0)
+                .padding(.bottom, padding?.bottom ?? 0)
+                .padding(.leading, padding?.leading ?? 0)
+                .padding(.trailing, padding?.trailing ?? 0)
             } else {
                 self
                     .transition(transition.type)
